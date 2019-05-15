@@ -1,0 +1,39 @@
+// HKOI Addition S022.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+#include <algorithm>    
+#include <vector> 
+
+using namespace std;
+
+int main()
+{
+	int numberVectorSize = 0;
+	cin >> numberVectorSize;
+
+	int minTime = 0;
+	int tempSum = 0;
+
+	vector<int> numberVector;
+
+	for (int i = 1; i <= numberVectorSize; i++)
+	{
+		int temp = 0;
+		cin >> temp;
+		numberVector.push_back(temp);
+	}
+
+	for (int i = 1; i <= numberVectorSize - 1; i++)
+	{
+		std::sort(numberVector.begin(), numberVector.end());
+		tempSum = numberVector.at(0) + numberVector.at(1);
+		minTime += tempSum;
+		numberVector.erase(numberVector.begin());
+		numberVector.erase(numberVector.begin());
+		numberVector.push_back(tempSum);
+		
+	}
+	
+	cout << minTime;
+}
