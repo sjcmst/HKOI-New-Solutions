@@ -1,0 +1,63 @@
+// HKOI S001.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+#include <algorithm>    
+#include <vector> 
+
+using namespace std;
+
+int main()
+{
+	int size;
+	cin >> size;
+
+	char input[201];
+	cin >> input;
+	cin.ignore();
+
+	int orgevensum = 0;
+	int orgoddsum = 0;
+
+	int newevensum = 0;
+	int newoddsum = 0;
+	
+	unsigned long long finalCardNumber = 0;
+
+	vector<int> digits;
+	int remainder = 0;
+
+	bool truth = false; 
+
+	for (int i = 0; i < size; i = i + 2) {
+		orgevensum += (int)input[i] - 48;
+	}
+
+	for (int i = 1; i < size; i = i + 2) {
+		orgoddsum += (int)input[i] - 48;
+	}
+
+	int digit = 1;
+
+	for (int digit = 0; digit <= 9; digit++)
+	{
+		newoddsum = orgevensum;
+		newevensum = orgoddsum;
+		if (size % 2 == 0) {
+			newoddsum += digit;
+		}
+
+		remainder = newoddsum - newevensum;
+		if (remainder % 11 == 0)
+		{
+			cout << digit;
+			truth = true;
+		}
+	}
+
+	if (truth == false)
+	{
+		cout << -1;
+	}
+	
+}
