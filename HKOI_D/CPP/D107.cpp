@@ -5,7 +5,7 @@
 using namespace std;
 
 int main(){
-    long long int i;
+    unsigned long long int i;
     cin >> i;
     bool isTriangular, isSquare;
     //Triangular test
