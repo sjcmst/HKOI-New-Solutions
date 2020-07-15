@@ -1,0 +1,55 @@
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int a, b, c, d, e, f, x ,y;
+
+	cin >> a >> b >> c >> d >> e >> f;
+
+	int det = a * e - b * d;
+
+	// if det exists
+	if (det != 0) {
+		x = (c * e - b * f) / det;
+		y = (a * f - c * d) / det;
+		cout << x << " " << y;
+	}
+	else {
+		// if matrix is 0 matrix
+		if ((a == 0) && (b == 0) && (d == 0) && (e == 0)) {
+			if ((c == 0) && (f == 0)) {
+				cout << "many solutions" << endl;
+			}
+			else {
+				cout << "no solution" << endl;
+			}
+		}
+
+		// If matrix is not 0 matrix
+		else {
+			if ((a == 0) && (d == 0)) {
+				// Use (b, e) as vector for detecting colinearlity
+				if ((b * c + e * f) * (b * c + e * f) == (b * b + e * e) * (c * c + f * f)) {
+					cout << "many solutions" << endl;
+				}
+				else {
+					cout << "no solution" << endl;
+				}
+			}
+			else {
+				// Use (a, d) as vector for detecting colinearlity
+				if ((a * c + d * f) * (a * c + d * f) == (a * a + d * d) * (c * c + f * f)) {
+					cout << "many solutions" << endl;
+				}
+				else {
+					cout << "no solution" << endl;
+				}
+			}
+		}
+
+	}
+
+
+}
